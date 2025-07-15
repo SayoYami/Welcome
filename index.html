@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Boas-Vindas</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      width: 800px;
+      height: 360px;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+    }
+
+    .texto {
+      position: absolute;
+      color: white;
+      left: 30px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    .titulo  { top: 40px; font-size: 28px; }
+    .linha1  { top: 90px; font-size: 20px; }
+    .linha2  { top: 130px; font-size: 20px; }
+    .linha3  { top: 170px; font-size: 20px; }
+    .linha4  { top: 210px; font-size: 20px; }
+
+    .perfil {
+      position: absolute;
+      top: 100px;
+      right: 40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="background" id="bg" src="" alt="Fundo">
+    <div class="texto titulo" id="titulo">BEM VINDO(A)</div>
+    <div class="texto linha1" id="nome">Nome: Usuário</div>
+    <div class="texto linha2" id="grupo">Grupo: --</div>
+    <div class="texto linha3" id="ano">Ano: --</div>
+    <div class="texto linha4" id="membros">Membros: --</div>
+    <img class="perfil" id="avatar" src="" alt="Foto de perfil">
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById('titulo').innerText = params.get('titulo') || 'BEM VINDO(A)';
+    document.getElementById('nome').innerText = 'Nome: ' + (params.get('nome') || 'Usuário');
+    document.getElementById('grupo').innerText = 'Grupo: ' + (params.get('grupo') || '--');
+    document.getElementById('ano').innerText = 'Ano: ' + (params.get('ano') || '--');
+    document.getElementById('membros').innerText = 'Membros: ' + (params.get('quantidade_membros') || '--');
+
+    document.getElementById('bg').src = params.get('fundo') || 'https://files.catbox.moe/lnk6nq.jpg';
+    document.getElementById('avatar').src = params.get('perfil') || 'https://files.catbox.moe/oix1a9.jpg';
+  </script>
+</body>
+</html>
